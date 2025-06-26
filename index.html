@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zheqing (Bill) Zhu - AI Researcher & Entrepreneur</title>
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --light-text: #f5f5f5;
+            --blue-accent: #3498db;
+            --blue-accent-dark: #2980b9;
+            --section-padding: 80px 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: var(--section-padding);
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--blue-accent);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        a {
+            color: var(--blue-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--blue-accent-dark);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(10, 10, 10, 0.98);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blue-accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light-text);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--blue-accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--darker-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero-text h3 {
+            font-size: 1.5rem;
+            color: var(--blue-accent);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .profile-img {
+            flex: 0 0 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--blue-accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* About Section */
+        #about {
+            background-color: var(--dark-bg);
+        }
+        
+        /* Experience Section */
+        #experience {
+            background-color: var(--darker-bg);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--blue-accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--blue-accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--blue-accent);
+        }
+        
+        .timeline-content h4 {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        /* Education Section */
+        #education {
+            background-color: var(--dark-bg);
+        }
+        
+        .education-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .education-card {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .education-card h3 {
+            color: var(--blue-accent);
+            margin-bottom: 10px;
+        }
+        
+        .education-card h4 {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        /* Research Section */
+        #research {
+            background-color: var(--darker-bg);
+        }
+        
+        .research-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .research-item {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .research-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+        
+        .research-item h3 {
+            color: var(--blue-accent);
+            margin-bottom: 15px;
+        }
+        
+        /* Publications Section */
+        #publications {
+            background-color: var(--dark-bg);
+        }
+        
+        .publications-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        
+        .publications-table th, .publications-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .publications-table th {
+            background-color: rgba(52, 152, 219, 0.2);
+            color: var(--blue-accent);
+            font-weight: 600;
+        }
+        
+        .publications-table tr {
+            transition: background-color 0.3s ease;
+        }
+        
+        .publications-table tr:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        /* Skills Section */
+        #skills {
+            background-color: var(--darker-bg);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-card {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+        
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--blue-accent);
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        #contact {
+            background-color: var(--dark-bg);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--blue-accent);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--blue-accent);
+            color: var(--light-text);
+            transform: translateY(-5px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--darker-bg);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 1024px) {
+            .container {
+                width: 90%;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                background-color: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active .line2 {
+                opacity: 0;
+            }
+            
+            .hamburger.active .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-top: 30px;
+            }
+            
+            .profile-img {
+                flex: 0 0 200px;
+                height: 200px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            section {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Bill Zhu</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Zheqing (Bill) Zhu</h1>
+                    <h3>AI Researcher, Engineer, and Entrepreneur | Founder & CEO of Pokee AI</h3>
+                </div>
+                <div class="profile-img">
+                    <img src="https://pbs.twimg.com/media/GbVEef5bEAAzhYn?format=jpg&name=large" alt="Zheqing (Bill) Zhu">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Zheqing (Bill) Zhu is a highly accomplished researcher and engineer at the forefront of artificial intelligence, machine learning, and neuroscience. His passion lies in translating complex theoretical research into tangible, real-world applications. Currently, as Founder and CEO of Pokee AI, he is pioneering the next generation of AI agents. His journey is one of relentless pursuit of knowledge and innovation, from groundbreaking work in reinforcement learning to his current endeavors in AI-driven solutions for neurodegenerative diseases.</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Pokee AI</h3>
+                        <h4>Founder & CEO (2024 – Present)</h4>
+                        <p>Spearheading the development of cutting-edge AI agents, leading strategic vision, product innovation, and team leadership.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Meta</h3>
+                        <h4>Senior Staff Research Lead Manager (2017 – 2024)</h4>
+                        <p>Led a team on applied reinforcement learning, spearheaded the open-source 'Pearl' RL agent library, and developed RL-based ad optimization solutions generating hundreds of millions in revenue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-cards">
+                <div class="education-card">
+                    <h3>Albert Einstein College of Medicine</h3>
+                    <h4>2024 – Present</h4>
+                    <p>Doctoral studies in clinical neurodegenerative field, researching Alzheimer's disease using machine learning.</p>
+                </div>
+                <div class="education-card">
+                    <h3>Stanford University</h3>
+                    <h4>2017 – 2024</h4>
+                    <p>Ph.D. in Reinforcement Learning. Dissertation: "Bridging the Gap Between Theoretical RL and Real-World Applications."</p>
+                </div>
+                <div class="education-card">
+                    <h3>UNSW (University of New South Wales)</h3>
+                    <h4>Graduated 2017</h4>
+                    <p>Bachelor of Science in Neuroscience with First Class Honours and the University Medal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="container">
+            <h2>Research Initiatives</h2>
+            <div class="research-items">
+                <div class="research-item">
+                    <h3>Non-stationary Contextual Bandit Learning</h3>
+                    <p>Developing novel approaches to handle non-stationary environments in contextual bandit problems.</p>
+                </div>
+                <div class="research-item">
+                    <h3>Federated Q-learning</h3>
+                    <p>Exploring privacy-preserving reinforcement learning through federated approaches.</p>
+                </div>
+                <div class="research-item">
+                    <h3>Multi-agent Safe Planning</h3>
+                    <p>Creating frameworks for safe coordination and planning in multi-agent systems.</p>
+                </div>
+                <div class="research-item">
+                    <h3>Online Optimization of Resource Management</h3>
+                    <p>Applying RL techniques to optimize resource allocation in dynamic environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="container">
+            <h2>Publications</h2>
+            <div class="table-container">
+                <table class="publications-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Venue</th>
+                            <th>Date</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Non-stationary contextual bandit learning via neural predictive ensemble sampling</td>
+                            <td>arXiv</td>
+                            <td>2024</td>
+                            <td><a href="https://arxiv.org/abs/2406.11898" target="_blank">View Paper</a></td>
+                        </tr>
+                        <tr>
+                            <td>Federated Q-learning with reference-advantage decomposition...</td>
+                            <td>arXiv</td>
+                            <td>2024</td>
+                            <td><a href="https://arxiv.org/abs/2405.18795" target="_blank">View Paper</a></td>
+                        </tr>
+                        <tr>
+                            <td>Deep Exploration for Recommendation Systems</td>
+                            <td>ICLR</td>
+                            <td>2023</td>
+                            <td><a href="#" target="_blank">View Paper</a></td>
+                        </tr>
+                        <tr>
+                            <td>Aligned Multi Objective Optimization</td>
+                            <td>arXiv</td>
+                            <td>2025</td>
+                            <td><a href="https://arxiv.org/abs/2502.14096" target="_blank">View Paper</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Reinforcement Learning</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Machine Learning</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Large Language Models</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Neuroscience</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>C++</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Java</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Cloud Computing</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Git</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Docker</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Kubernetes</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Connect With Me</h2>
+            <div class="social-links">
+                <a href="https://github.com/facebookresearch/Pearl" target="_blank" class="social-link">GH</a>
+                <a href="https://www.linkedin.com/in/zheqingzhu" target="_blank" class="social-link">LI</a>
+                <a href="https://x.com/zheqingzhu" target="_blank" class="social-link">X</a>
+                <a href="https://arxiv.org/search/cs?query=Zheqing&searchtype=author" target="_blank" class="social-link">AR</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Zheqing (Bill) Zhu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
